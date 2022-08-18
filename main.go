@@ -60,7 +60,8 @@ type chip8 struct {
 }
 
 func (c *chip8) initialize() {
-	// all values are intialized to zero, only need to set program counter to default location
+	// all values are already intialized to zero
+	// only need to set program counter to default location (0x200)
 	c.pc = 0x200
 
 	// load fonts
