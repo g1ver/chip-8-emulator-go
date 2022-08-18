@@ -68,15 +68,24 @@ func (c *chip8) initialize() {
 	for i := 0; i < fontSetSize; i++ {
 		c.m[i] = chipFontSet[i]
 	}
-
 }
 
-func (c *chip8) loadROM(r os.File) {
-	// TODO: loading ROMs into 0x200
+func (c *chip8) loadROM(fileName string) {
+	bin, err := os.ReadFile(fileName)
+	if err != nil {
+		fmt.Println("File error: ", err)
+		os.Exit(1)
+	}
+
+	// Load ROM into memory starting at 0x200
+	for i := 0; i < len(bin); i++ {
+		c.m[i+int(c.pc)] = bin[0]
+	}
 }
 
 func main() {
 	var c chip8
 	c.initialize()
-	fmt.Printf("c: %v\n", c)
+	c.loadROM("binaries/test.ch8")
+	// fmt.Printf("c mem: %v\n", c.m)
 }
