@@ -19,14 +19,14 @@ type (
 	chipKeyPad     [16]uint8
 	chipMemory     [4096]uint8
 	fontSet        [fontSetSize]uint8
+	// delayTimer uint8
+	// soundTimer uint8
 )
 
 // MEMORY LAYOUT (4096 BYTES)
 // 0x000 to 0x1FF interpreter
 // 0x050 to 0x0A0 font set
 // 0x200 to 0xFFF program ROM and ram
-// type delayTimer uint8
-// type soundTimer uint8
 
 var chipFontSet = fontSet{
 	0xF0, 0x90, 0x90, 0x90, 0xF0, // 0
